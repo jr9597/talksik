@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Talksik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@360;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <p class="mark">Talksik</p>
+      <h1>Hold, and sustain “ah”.</h1>
+      <p class="lede">A small encoder compares one second of your voice with clinic recordings of healthy voices and three voice disorders. It runs in this browser. The recording stays here.</p>
+    </header>
+
+    <section class="stage">
+      <button id="hold" type="button" aria-describedby="hint">
+        <span class="ring"></span>
+        <span class="label">Hold</span>
+      </button>
+      <p id="hint">Hold the button, or hold the space bar. Let go when you have said a steady “ah”.</p>
+      <canvas id="spec" width="720" height="160" aria-label="Spectrogram of the last recording"></canvas>
+    </section>
+
+    <section id="scores" hidden>
+      <ol id="rows"></ol>
+      <p id="readout"></p>
+    </section>
+
+    <section class="examples">
+      <button id="sample" type="button">Score a clinic vowel</button>
+      <p id="sample-name"></p>
+    </section>
+
+    <footer>
+      <p id="metrics">Loading the model…</p>
+      <p>Trained on sustained /a/ vowels from the <a href="https://zenodo.org/records/16874898">Saarbrücken Voice Database</a> (Pützer &amp; Barry, CC BY 4.0). Speakers in the test score never appeared in training. This is a research demo, not a medical device, and not a diagnosis.</p>
+    </footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

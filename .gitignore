@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+data/
+web/node_modules/
+web/vendor/
+*.onnx
+web/model/
+dist/
+.wrangler/

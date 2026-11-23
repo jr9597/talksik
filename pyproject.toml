@@ -1,0 +1,16 @@
+[project]
+name = "talksik"
+version = "0.1.0"
+description = "A small voice encoder and browser demo trained on the Saarbrücken Voice Database."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "numpy",
+  "onnx",
+  "onnxruntime",
+  "scipy",
+  "torch",
+  "transformers",
+]
+
+[tool.uv]
+package = false
