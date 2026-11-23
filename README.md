@@ -35,6 +35,21 @@ The evidence is this corpus and this one prompted sentence, recorded at 50 kHz i
 
 Training uses a learning rate of 2e-5, a 10% warmup, weight decay 0.01, batches of 8 with gradient accumulation of 2, and 16-bit precision on a GPU. It runs for up to 12 epochs and stops early if validation sentence macro F1 does not improve for 3 epochs. Training clips get a small random gain and a little noise.
 
+## Result
+
+A T4 run finished in 1 hour 40 minutes. Early stopping kept the epoch-2 checkpoint, where validation sentence macro F1 was 0.66. On 176 held-out sentences the macro F1 is **0.52** and balanced accuracy is **0.52**. The same speakers’ vowels, scored only as a side check, land at 0.31 macro F1.
+
+Rows are the true label. Columns are the prediction: healthy, hyperfunctional dysphonia, vocal-fold paralysis, laryngitis.
+
+|  | Healthy | Dysphonia | Paralysis | Laryngitis |
+| --- | ---: | ---: | ---: | ---: |
+| Healthy | 75 | 21 | 1 | 2 |
+| Dysphonia | 9 | 13 | 6 | 3 |
+| Paralysis | 2 | 8 | 14 | 3 |
+| Laryngitis | 3 | 3 | 6 | 7 |
+
+The weights are the private model [`jrrd/talksik-hubert`](https://huggingface.co/jrrd/talksik-hubert), with `metrics.json` beside them.
+
 ## Train
 
 The fine-tune runs on a Hugging Face Jobs T4. Jobs need a paid Hugging Face plan with prepaid credits. A T4 is about $0.40 an hour, and a full run fits in an 8 hour cap.
@@ -57,7 +72,3 @@ uv run hf jobs logs -f your-username/JOB_ID
 ```
 
 The download log prints one line when each zip starts and stays there until that file finishes. `healthy.zip` is 6 GB, so that first line sits for a while.
-
-## Browser sketch
-
-`web/` is an earlier in-browser page that scores a sustained “ah” with a small ONNX encoder. The sentence model above is the one this project is training.
