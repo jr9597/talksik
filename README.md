@@ -48,7 +48,7 @@ Rows are the true label. Columns are the prediction: healthy, hyperfunctional dy
 | Paralysis | 2 | 8 | 14 | 3 |
 | Laryngitis | 3 | 3 | 6 | 7 |
 
-The weights are the private model [`jrrd/talksik-hubert`](https://huggingface.co/jrrd/talksik-hubert), with `metrics.json` beside them.
+The weights are [`jrrd/talksik-hubert`](https://huggingface.co/jrrd/talksik-hubert), with `metrics.json` beside them.
 
 ## Train
 
